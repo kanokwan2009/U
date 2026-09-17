@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echoes of Aether</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- TITLE -->
+    <section id="titleScreen" class="screen active">
+        <div class="title-box">
+            <p class="small-title">A STORY RPG</p>
+            <h1>ECHOES<br>OF AETHER</h1>
+            <p class="subtitle">เสียงสะท้อนแห่งดินแดนที่สูญหาย</p>
+
+            <button onclick="startGame()">เริ่มการผจญภัย</button>
+            <button class="secondary" onclick="loadGame()">โหลดเกม</button>
+        </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="storyScreen" class="screen">
+        <div class="story-bg"></div>
+
+        <div class="story-box">
+            <div id="storyText"></div>
+            <button onclick="nextStory()">ต่อไป</button>
+        </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="gameScreen" class="screen">
+
+        <header>
+            <div>
+                <strong>Echoes of Aether</strong>
+            </div>
+
+            <div class="header-buttons">
+                <button onclick="saveGame()">บันทึก</button>
+                <button onclick="openInventory()">กระเป๋า</button>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- CHARACTER -->
+            <div class="character-panel panel">
+
+                <div class="character-avatar">
+                    ⚔️
+                </div>
+
+                <div class="character-info">
+                    <h2 id="playerName">Aren</h2>
+
+                    <div class="level">
+                        LV <span id="level">1</span>
+                    </div>
+
+                    <div class="bar-label">
+                        HP <span id="hpText"></span>
+                    </div>
+                    <div class="bar">
+                        <div id="hpBar" class="hp"></div>
+                    </div>
+
+                    <div class="bar-label">
+                        MP <span id="mpText"></span>
+                    </div>
+                    <div class="bar">
+                        <div id="mpBar" class="mp"></div>
+                    </div>
+
+                    <div class="bar-label">
+                        EXP <span id="expText"></span>
+                    </div>
+                    <div class="bar">
+                        <div id="expBar" class="exp"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- MAP -->
+            <div class="map-panel panel">
+
+                <h2>🌲 ป่าเอเธเรีย</h2>
+
+                <p id="locationDescription">
+                    ป่าที่ครั้งหนึ่งเคยเป็นบ้านของเหล่าผู้พิทักษ์
+                </p>
+
+                <div class="map">
+                    <div class="map-location current">🏕️</div>
+                    <div class="map-location">🌲</div>
+                    <div class="map-location">🏚️</div>
+                    <div class="map-location">🏰</div>
+                </div>
+
+                <button onclick="explore()">สำรวจพื้นที่</button>
+
+            </div>
+
+            <!-- QUEST -->
+            <div class="quest-panel panel">
+                <h3>📜 ภารกิจปัจจุบัน</h3>
+                <p id="questText">
+                    ค้นหาต้นกำเนิดของเสียงปริศนาในป่า
+                </p>
+            </div>
+
+            <!-- LOG -->
+            <div class="log-panel panel">
+                <h3>บันทึกเหตุการณ์</h3>
+                <div id="gameLog"></div>
+            </div>
+
+        </main>
+    </section>
+
+    <!-- BATTLE -->
+    <section id="battleScreen" class="screen">
+
+        <div class="battle-background"></div>
+
+        <div class="battle-top">
+
+            <div class="enemy-card">
+                <div class="enemy-icon" id="enemyIcon">👹</div>
+                <h2 id="enemyName">Shadow Wolf</h2>
+
+                <div class="bar">
+                    <div id="enemyHpBar" class="enemy-hp"></div>
+                </div>
+
+                <span id="enemyHpText"></span>
+            </div>
+
+        </div>
+
+        <div class="battle-arena">
+
+            <div class="fighter player-fighter">
+                ⚔️
+                <div class="damage-text" id="playerDamage"></div>
+            </div>
+
+            <div class="battle-effect" id="battleEffect"></div>
+
+            <div class="fighter enemy-fighter">
+                👹
+                <div class="damage-text" id="enemyDamage"></div>
+            </div>
+
+        </div>
+
+        <div class="battle-message" id="battleMessage">
+            ศัตรูปรากฏตัว!
+        </div>
+
+        <div class="battle-actions">
+
+            <button onclick="attack()">
+                ⚔️ โจมตี
+            </button>
+
+            <button onclick="useSkill()">
+                🔥 สกิล
+            </button>
+
+            <button onclick="usePotion()">
+                🧪 Potion
+            </button>
+
+            <button onclick="tryEscape()">
+                🏃 หนี
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- INVENTORY -->
+    <section id="inventoryScreen" class="screen">
+
+        <div class="inventory-box">
+
+            <h1>🎒 กระเป๋า</h1>
+
+            <div id="inventoryItems"></div>
+
+            <button onclick="closeInventory()">กลับ</button>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
